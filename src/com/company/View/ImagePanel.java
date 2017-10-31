@@ -1,8 +1,7 @@
 package com.company.View;
 
-import com.company.Model.Selections.ISelection;
+import com.company.Model.Selections.ASelection;
 import com.company.Model.Selections.SelectionFactory;
-import com.company.Model.Selections.SquareSelection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +15,12 @@ public class ImagePanel extends JPanel {
 
     private BufferedImage image;
     public SelectionFactory factory;
-    public ArrayList<ISelection> selections;
+    public ArrayList<ASelection> selections;
+    public ASelection temporarySelection;
 
     public ImagePanel(){
-        factory = new SelectionFactory();
+        factory = new SelectionFactory(this);
         selections = new ArrayList<>();
-        selections.add(new SquareSelection(0, 0, 100, 100));
     }
 
     @Override
@@ -33,10 +32,13 @@ public class ImagePanel extends JPanel {
         if(image!=null)
             g2d.drawImage(image, 0, 0, null);
 
-        for(ISelection sel : selections){
+        if(temporarySelection != null)
+            temporarySelection.drawYourself(g2d);
+
+        for(ASelection sel : selections){
             sel.drawYourself(g2d);
-            repaint();
         }
+        repaint();
     }
 
     public void updateImage(BufferedImage img){

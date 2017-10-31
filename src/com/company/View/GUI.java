@@ -1,7 +1,5 @@
 package com.company.View;
 
-import oracle.jvm.hotspot.jfr.JFR;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -29,7 +27,7 @@ public class GUI {
 
         frame.getContentPane().add(imagePanel, BorderLayout.CENTER);
         frame.getContentPane().add(menuPanel, BorderLayout.NORTH);
-        frame.getContentPane().add(selectionListPanel, BorderLayout.EAST);
+        frame.getContentPane().add(new JScrollPane(selectionListPanel), BorderLayout.EAST);
 
         frame.pack();
 

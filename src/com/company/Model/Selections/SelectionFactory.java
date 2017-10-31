@@ -1,6 +1,7 @@
 package com.company.Model.Selections;
 
-import com.company.Model.Selections.Selections;
+import com.company.View.ImagePanel;
+import com.company.View.SelectionList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -9,11 +10,16 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class SelectionFactory {
 
     public Selections currentSelection = Selections.SQUARE;
+    public ImagePanel imagePanel;
 
-    public ISelection createSelection(int x, int y){
+    public SelectionFactory(ImagePanel imagePanel){
+        this.imagePanel = imagePanel;
+    }
+
+    public ASelection createSelection(int x, int y){
         switch (currentSelection){
             case SQUARE:
-                return new SquareSelection(0, 0, 10, 10);
+                return new SquareSelection(0, 0, 10, 10, imagePanel);
             case CIRCLE:
                 throw new NotImplementedException();
             case RECTANGLE:

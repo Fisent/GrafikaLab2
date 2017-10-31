@@ -19,6 +19,8 @@ public class Main {
 
         gui.menuPanel.loadImageButton.addActionListener(new LoadImageButtonListener(gui.imagePanel));
         gui.menuPanel.closeImageButton.addActionListener(new CloseImageButtonListener(gui.imagePanel));
-        gui.imagePanel.addMouseListener(new ImagePanelListener(gui.imagePanel));
+        ImagePanelListener imagePanelListener = new ImagePanelListener(gui.imagePanel, gui.selectionListPanel);
+        gui.imagePanel.addMouseListener(imagePanelListener);
+        gui.imagePanel.addMouseMotionListener(imagePanelListener);
     }
 }

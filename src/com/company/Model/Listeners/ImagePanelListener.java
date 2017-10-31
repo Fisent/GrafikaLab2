@@ -1,6 +1,7 @@
-package com.company.Model;
+package com.company.Model.Listeners;
 
 import com.company.Model.Selections.SquareSelection;
+import com.company.View.GUI;
 import com.company.View.ImagePanel;
 import com.company.View.SelectionListPanel;
 
@@ -59,6 +60,7 @@ public class ImagePanelListener implements MouseListener, MouseMotionListener {
         imagePanel.temporarySelection = null;
         selectionListPanel.setList(imagePanel.selections);
 
+        GUI.frame.pack();
     }
 
     @Override

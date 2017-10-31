@@ -1,15 +1,10 @@
 package com.company;
 
 
-import com.company.Model.CloseImageButtonListener;
-import com.company.Model.ImagePanelListener;
-import com.company.Model.LoadImageButtonListener;
+import com.company.Model.Listeners.CloseImageButtonListener;
+import com.company.Model.Listeners.ImagePanelListener;
+import com.company.Model.Listeners.LoadImageButtonListener;
 import com.company.View.GUI;
-import com.company.View.ImagePanel;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 public class Main {
 

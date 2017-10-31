@@ -1,4 +1,4 @@
-package com.company.Model;
+package com.company.Model.Listeners;
 
 import com.company.View.ImagePanel;
 

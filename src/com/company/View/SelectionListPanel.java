@@ -1,5 +1,6 @@
 package com.company.View;
 
+import com.company.Model.DeleteSelectionButton;
 import com.company.Model.Selections.ASelection;
 
 import javax.swing.*;
@@ -12,9 +13,11 @@ import java.util.ArrayList;
 public class SelectionListPanel extends JPanel {
 
     private ArrayList<ASelection> selections;
+    private ImagePanel imagePanel;
 
-    public SelectionListPanel(){
+    public SelectionListPanel(ImagePanel imagePanel){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.imagePanel = imagePanel;
     }
 
     public void setList(ArrayList<ASelection> list){
@@ -23,10 +26,13 @@ public class SelectionListPanel extends JPanel {
     }
 
     private void updateList(){
+        repaint();
+        revalidate();
         removeAll();
         for(ASelection selection : selections){
-            JButton button = new JButton(selection.toString());
+            DeleteSelectionButton button = new DeleteSelectionButton(selection.toString(), selection, imagePanel, this);
             add(button);
+            button.addActionListener(button);
         }
     }
 

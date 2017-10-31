@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class GUI {
 
-    public JFrame frame;
+    public static JFrame frame;
     public ImagePanel imagePanel;
     public MenuPanel menuPanel;
     public SelectionListPanel selectionListPanel;
@@ -17,7 +17,7 @@ public class GUI {
         frame = new JFrame("Program");
         imagePanel = new ImagePanel();
         menuPanel = new MenuPanel();
-        selectionListPanel = new SelectionListPanel();
+        selectionListPanel = new SelectionListPanel(imagePanel);
     }
 
     public void show(){

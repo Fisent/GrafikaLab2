@@ -1,5 +1,6 @@
-package com.company.Model;
+package com.company.Model.Listeners;
 
+import com.company.Model.IOManager;
 import com.company.View.ImagePanel;
 import com.company.View.MenuPanel;
 

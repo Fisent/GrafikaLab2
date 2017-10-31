@@ -23,6 +23,10 @@ public class ImagePanel extends JPanel {
         selections = new ArrayList<>();
     }
 
+    public void updateList(){
+
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

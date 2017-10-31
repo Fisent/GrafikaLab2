@@ -1,7 +1,6 @@
 package com.company.Model.Selections;
 
 import com.company.View.ImagePanel;
-import com.company.View.SelectionList;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**

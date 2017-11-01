@@ -1,4 +1,4 @@
-package com.company.Model;
+package com.company.Model.Listeners;
 
 import com.company.Model.Selections.ASelection;
 import com.company.View.GUI;
@@ -26,9 +26,7 @@ public class DeleteSelectionButton extends JButton implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.print(imagePanel.selections.size());
         imagePanel.selections.remove(selection);
         selectionListPanel.setList(imagePanel.selections);
-        System.out.print(" " + imagePanel.selections.size());
     }
 }

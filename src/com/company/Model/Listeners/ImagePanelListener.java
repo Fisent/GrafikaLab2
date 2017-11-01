@@ -1,6 +1,7 @@
 package com.company.Model.Listeners;
 
-import com.company.Model.Selections.SquareSelection;
+import com.company.Model.Selections.ASelection;
+import com.company.Model.Selections.SelectionFactory;
 import com.company.View.GUI;
 import com.company.View.ImagePanel;
 import com.company.View.SelectionListPanel;
@@ -17,15 +18,17 @@ public class ImagePanelListener implements MouseListener, MouseMotionListener {
     private ImagePanel imagePanel;
     private SelectionListPanel selectionListPanel;
     private int startX, startY;
+    private SelectionFactory factory;
 
-    public ImagePanelListener(ImagePanel imagePanel, SelectionListPanel selectionListPanel){
+    public ImagePanelListener(ImagePanel imagePanel, SelectionListPanel selectionListPanel, SelectionFactory factory){
         this.imagePanel = imagePanel;
         this.selectionListPanel = selectionListPanel;
+        this.factory = factory;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        //imagePanel.selections.add(new SquareSelection(e.getX(), e.getY(), 10, 10));
+        //imagePanel.selections.add(new RectangleSelection(e.getX(), e.getY(), 10, 10));
     }
 
     @Override
@@ -36,26 +39,9 @@ public class ImagePanelListener implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
-        int positionX, positionY, width, height;
-
-        if(e.getX() > startX){
-            positionX = startX;
-            width = e.getX() - startX;
-        } else{
-            positionX = e.getX();
-            width = startX - e.getX();
-        }
-
-        if(e.getY() > startY){
-            positionY = startY;
-            height = e.getY() - startY;
-        } else{
-            positionY = e.getY();
-            height = startY - e.getY();
-        }
-
-        imagePanel.selections.add((new SquareSelection(positionX, positionY, width, height, imagePanel)));
+        ASelection selection = factory.createSelection(startX, startY, e.getX(), e.getY());
+        selection.setId();
+        imagePanel.selections.add(selection);
 
         imagePanel.temporarySelection = null;
         selectionListPanel.setList(imagePanel.selections);
@@ -75,25 +61,8 @@ public class ImagePanelListener implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        int positionX, positionY, width, height;
-
-        if(e.getX() > startX){
-            positionX = startX;
-            width = e.getX() - startX;
-        } else{
-            positionX = e.getX();
-            width = startX - e.getX();
-        }
-
-        if(e.getY() > startY){
-            positionY = startY;
-            height = e.getY() - startY;
-        } else{
-            positionY = e.getY();
-            height = startY - e.getY();
-        }
-
-        imagePanel.temporarySelection = new SquareSelection(positionX, positionY, width, height, imagePanel);
+        ASelection selection = factory.createSelection(startX, startY, e.getX(), e.getY());
+        imagePanel.temporarySelection = selection;
     }
 
     @Override

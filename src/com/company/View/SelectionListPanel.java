@@ -1,6 +1,6 @@
 package com.company.View;
 
-import com.company.Model.DeleteSelectionButton;
+import com.company.Model.Listeners.DeleteSelectionButton;
 import com.company.Model.Selections.ASelection;
 
 import javax.swing.*;
@@ -14,9 +14,11 @@ public class SelectionListPanel extends JPanel {
 
     private ArrayList<ASelection> selections;
     private ImagePanel imagePanel;
+    private JLabel instructionLabel;
 
     public SelectionListPanel(ImagePanel imagePanel){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        instructionLabel = new JLabel("<html><font color='white'>Naciśnij, żeby usunąć</font></html>");
         this.imagePanel = imagePanel;
     }
 
@@ -29,6 +31,7 @@ public class SelectionListPanel extends JPanel {
         repaint();
         revalidate();
         removeAll();
+        add(instructionLabel);
         for(ASelection selection : selections){
             DeleteSelectionButton button = new DeleteSelectionButton(selection.toString(), selection, imagePanel, this);
             add(button);

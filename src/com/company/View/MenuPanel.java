@@ -3,6 +3,8 @@ package com.company.View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 
 /**
@@ -15,6 +17,11 @@ public class MenuPanel extends JPanel {
     public JButton loadImageButton;
     public JButton closeImageButton;
 
+    //selection types button
+    public JButton rectangleSelectionButton;
+    public JButton circleSelectionButton;
+    public JButton polygonSelectionButton;
+
 
     public MenuPanel(){
         saveButton = new JButton("ZAPISZ");
@@ -22,10 +29,19 @@ public class MenuPanel extends JPanel {
         loadImageButton = new JButton("WCZYTAJ OBRAZEK");
         closeImageButton = new JButton("ZAMKNIJ OBRAZEK");
 
+        rectangleSelectionButton = new JButton("Prostokąt");
+        circleSelectionButton = new JButton("Owal");
+        polygonSelectionButton = new JButton("Wielokąt");
+
+
         add(saveButton);
         add(loadInformationButton);
         add(loadImageButton);
         add(closeImageButton);
+
+        add(rectangleSelectionButton);
+        add(circleSelectionButton);
+        add(polygonSelectionButton);
     }
 
     @Override
@@ -36,4 +52,8 @@ public class MenuPanel extends JPanel {
         g2d.setColor(Color.LIGHT_GRAY);
         g2d.fillRect(0, 0, getWidth(), getHeight());
     }
+
+
+
+
 }

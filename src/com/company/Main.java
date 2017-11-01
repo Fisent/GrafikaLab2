@@ -1,20 +1,27 @@
 package com.company;
 
 
-import com.company.Model.Listeners.CloseImageButtonListener;
-import com.company.Model.Listeners.ImagePanelListener;
-import com.company.Model.Listeners.LoadImageButtonListener;
+import com.company.Model.Listeners.*;
 import com.company.View.GUI;
+import com.company.View.ImagePanel;
 
 public class Main {
+
+    public static ImagePanelListener imagePanelListener = null;
+    public static ImagePanelMultipleListener imagePanelMultipleListener;
 
     public static void main(String[] args) {
         GUI gui = new GUI();
         gui.show();
 
+        imagePanelListener = new ImagePanelListener(gui.imagePanel, gui.selectionListPanel, gui.imagePanel.factory);
+        imagePanelMultipleListener = new ImagePanelMultipleListener(gui.imagePanel, gui.selectionListPanel, gui.imagePanel.factory);
+
         gui.menuPanel.loadImageButton.addActionListener(new LoadImageButtonListener(gui.imagePanel));
         gui.menuPanel.closeImageButton.addActionListener(new CloseImageButtonListener(gui.imagePanel));
-        ImagePanelListener imagePanelListener = new ImagePanelListener(gui.imagePanel, gui.selectionListPanel);
+        gui.menuPanel.circleSelectionButton.addActionListener(new OvalSelectionButtonListener(gui.imagePanel));
+        gui.menuPanel.rectangleSelectionButton.addActionListener(new RectangleSelectionButtonListener(gui.imagePanel));
+        gui.menuPanel.polygonSelectionButton.addActionListener(new PolygonSelectionButtonListener(gui.imagePanel));
         gui.imagePanel.addMouseListener(imagePanelListener);
         gui.imagePanel.addMouseMotionListener(imagePanelListener);
     }

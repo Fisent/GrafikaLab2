@@ -21,6 +21,5 @@ public class LoadImageButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         panel.updateImage(IOManager.loadImage("sunset.png"));
-
     }
 }

@@ -23,18 +23,17 @@ public class ImagePanel extends JPanel {
         selections = new ArrayList<>();
     }
 
-    public void updateList(){
-
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
 
-        if(image!=null)
+        if(image!=null) {
+            g2d.setPaintMode();
             g2d.drawImage(image, 0, 0, null);
+        }
+        g2d.setXORMode(Color.WHITE);
 
         if(temporarySelection != null)
             temporarySelection.drawYourself(g2d);

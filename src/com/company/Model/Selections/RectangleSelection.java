@@ -37,7 +37,7 @@ public class RectangleSelection extends ASelection {
 
     @Override
     public String toSerializableString() {
-        return "rectangle," + x + "," + y + "," + width + "," + height;
+        return "r," + id + "," + x + "," + y + "," + width + "," + height;
     }
 
     @Override

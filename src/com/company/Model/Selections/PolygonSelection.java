@@ -1,6 +1,5 @@
 package com.company.Model.Selections;
 
-import com.company.Model.*;
 import com.company.View.ImagePanel;
 
 import java.awt.*;
@@ -51,7 +50,7 @@ public class PolygonSelection extends ASelection {
 
     @Override
     public String toSerializableString() {
-        String out = "p";
+        String out = "p," + id;
         for(Point p : points)
             out += "," + p.x + "," + p.y;
         return out;

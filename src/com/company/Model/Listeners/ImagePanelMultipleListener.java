@@ -56,8 +56,6 @@ public class ImagePanelMultipleListener implements MouseListener {
 
         selectionListPanel.setList(imagePanel.selections);
         GUI.frame.pack();
-
-        System.out.println("click");
     }
 
     @Override

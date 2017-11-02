@@ -1,8 +1,11 @@
 package com.company.Model;
 
 import com.company.Model.Selections.ASelection;
+import com.company.Model.Selections.OvalSelection;
+import com.company.Model.Selections.PolygonSelection;
 import com.company.Model.Selections.RectangleSelection;
 import com.company.View.ImagePanel;
+import org.w3c.dom.css.Rect;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.imageio.ImageIO;
@@ -28,7 +31,6 @@ public class IOManager {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("save.txt"));
             for(ASelection selection : selections){
-                System.out.println(selection.toSerializableString());
                 writer.write(selection.toSerializableString() + "\n");
             }
             writer.close();
@@ -46,12 +48,18 @@ public class IOManager {
             Scanner scanner = new Scanner(new File("save.txt"));
             while (scanner.hasNextLine()) {
                 String s = scanner.nextLine();
-                System.out.println(s);
                 String[] tab = s.split(",");
                 char type = s.charAt(0);
                 switch (type) {
                     case 'r':
                         loadedList.add(getRectangleSelection(tab, imagePanel));
+                        break;
+                    case 'o':
+                        loadedList.add(getOvalSelection(tab, imagePanel));
+                        break;
+                    case 'p':
+                        loadedList.add(getPolygonSelection(tab, imagePanel));
+                        break;
                 }
             }
         }catch(IOException e){
@@ -62,11 +70,37 @@ public class IOManager {
 
     private static RectangleSelection getRectangleSelection(String[] line, ImagePanel imagePanel){
         int x, y, width, height;
-        x = Integer.parseInt(line[1]);
-        y = Integer.parseInt(line[2]);
-        width = Integer.parseInt(line[3]);
-        height = Integer.parseInt(line[4]);
+        x = Integer.parseInt(line[2]);
+        y = Integer.parseInt(line[3]);
+        width = Integer.parseInt(line[4]);
+        height = Integer.parseInt(line[5]);
 
-        return new RectangleSelection(x, y, width, height, imagePanel);
+        RectangleSelection selection = new RectangleSelection(x, y, width, height, imagePanel);
+        selection.id = Integer.parseInt(line[1]);
+        return selection;
+    }
+
+    private static OvalSelection getOvalSelection(String[] line, ImagePanel imagePanel){
+        int x, y, width, height;
+        x = Integer.parseInt(line[2]);
+        y = Integer.parseInt(line[3]);
+        width = Integer.parseInt(line[4]);
+        height = Integer.parseInt(line[5]);
+
+        OvalSelection selection = new OvalSelection(x, y, width, height, imagePanel);
+        selection.id = Integer.parseInt(line[1]);
+        return selection;
+    }
+
+    private static PolygonSelection getPolygonSelection(String[] line, ImagePanel imagePanel){
+        PolygonSelection selection = new PolygonSelection(imagePanel);
+        selection.id = Integer.parseInt(line[1]);
+        for(int i = 2; i< line.length-3; i+=2){
+            int x = Integer.parseInt(line[i]);
+            int y = Integer.parseInt(line[i+1]);
+            selection.addPoint(x, y);
+        }
+        selection.points.add(new Point(selection.points.get(0)));
+        return selection;
     }
 }

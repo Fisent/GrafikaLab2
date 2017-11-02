@@ -38,6 +38,6 @@ public class OvalSelection extends ASelection {
 
     @Override
     public String toSerializableString() {
-        return "o," + x + "," + y + "," + width + "," + height;
+        return "o," + id + "," + x + "," + y + "," + width + "," + height;
     }
 }

@@ -19,6 +19,8 @@ public class Main {
 
         gui.menuPanel.loadImageButton.addActionListener(new LoadImageButtonListener(gui.imagePanel));
         gui.menuPanel.closeImageButton.addActionListener(new CloseImageButtonListener(gui.imagePanel));
+        gui.menuPanel.saveButton.addActionListener(new SaveButtonListener(gui.imagePanel));
+        gui.menuPanel.loadInformationButton.addActionListener(new LoadButtonListener(gui.imagePanel));
         gui.menuPanel.circleSelectionButton.addActionListener(new OvalSelectionButtonListener(gui.imagePanel));
         gui.menuPanel.rectangleSelectionButton.addActionListener(new RectangleSelectionButtonListener(gui.imagePanel));
         gui.menuPanel.polygonSelectionButton.addActionListener(new PolygonSelectionButtonListener(gui.imagePanel));

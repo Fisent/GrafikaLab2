@@ -36,7 +36,12 @@ public class RectangleSelection extends ASelection {
     }
 
     @Override
+    public String toSerializableString() {
+        return "rectangle," + x + "," + y + "," + width + "," + height;
+    }
+
+    @Override
     public String toString(){
-        return "Square" + id + " " + "x: " + x + ", y: " + y + " width: " + width + ", height: " + height;
+        return "s" + id + " " + "x: " + x + ", y: " + y + " width: " + width + ", height: " + height;
     }
 }

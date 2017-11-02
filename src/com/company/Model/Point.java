@@ -11,6 +11,11 @@ public class Point {
         this.y = y;
     }
 
+    public Point(Point point){
+        this.x = point.x;
+        this.y = point.y;
+    }
+
     public int distance(Point other){
         return Math.abs(x - other.x) + Math.abs(y - other.y);
     }

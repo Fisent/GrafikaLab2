@@ -35,4 +35,9 @@ public class OvalSelection extends ASelection {
     public void addPoint(int x, int y) {
         throw  new NotImplementedException();
     }
+
+    @Override
+    public String toSerializableString() {
+        return "o," + x + "," + y + "," + width + "," + height;
+    }
 }

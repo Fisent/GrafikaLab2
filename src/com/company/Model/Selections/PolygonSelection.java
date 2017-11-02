@@ -38,11 +38,23 @@ public class PolygonSelection extends ASelection {
 
         Point newPoint = new Point(x, y);
         if(!points.isEmpty()) {
-            points.add(newPoint);
+
             int distance = points.get(0).distance(newPoint);
             done = distance <= DELTA;
+            if(done){
+                points.add(new Point(points.get(0)));
+            }
+            else points.add(newPoint);
         }
         else points.add(newPoint);
+    }
+
+    @Override
+    public String toSerializableString() {
+        String out = "p";
+        for(Point p : points)
+            out += "," + p.x + "," + p.y;
+        return out;
     }
 
     @Override

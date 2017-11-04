@@ -21,6 +21,7 @@ public class MenuPanel extends JPanel {
     public JButton rectangleSelectionButton;
     public JButton circleSelectionButton;
     public JButton polygonSelectionButton;
+    public JButton bezierSelectionButton;
 
 
     public MenuPanel(){
@@ -32,6 +33,7 @@ public class MenuPanel extends JPanel {
         rectangleSelectionButton = new JButton("Prostokąt");
         circleSelectionButton = new JButton("Owal");
         polygonSelectionButton = new JButton("Wielokąt");
+        bezierSelectionButton = new JButton("Bezier");
 
 
         add(saveButton);
@@ -42,6 +44,7 @@ public class MenuPanel extends JPanel {
         add(rectangleSelectionButton);
         add(circleSelectionButton);
         add(polygonSelectionButton);
+        add(bezierSelectionButton);
     }
 
     @Override

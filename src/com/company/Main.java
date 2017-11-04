@@ -24,6 +24,7 @@ public class Main {
         gui.menuPanel.circleSelectionButton.addActionListener(new OvalSelectionButtonListener(gui.imagePanel));
         gui.menuPanel.rectangleSelectionButton.addActionListener(new RectangleSelectionButtonListener(gui.imagePanel));
         gui.menuPanel.polygonSelectionButton.addActionListener(new PolygonSelectionButtonListener(gui.imagePanel));
+        gui.menuPanel.bezierSelectionButton.addActionListener(new BezierSelectionButtonListener(gui.imagePanel));
         gui.imagePanel.addMouseListener(imagePanelListener);
         gui.imagePanel.addMouseMotionListener(imagePanelListener);
     }

@@ -1,9 +1,6 @@
 package com.company.Model;
 
-import com.company.Model.Selections.ASelection;
-import com.company.Model.Selections.OvalSelection;
-import com.company.Model.Selections.PolygonSelection;
-import com.company.Model.Selections.RectangleSelection;
+import com.company.Model.Selections.*;
 import com.company.View.ImagePanel;
 import org.w3c.dom.css.Rect;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -60,6 +57,8 @@ public class IOManager {
                     case 'p':
                         loadedList.add(getPolygonSelection(tab, imagePanel));
                         break;
+                    case 'b':
+                        loadedList.add(getBezierSelection(tab, imagePanel));
                 }
             }
         }catch(IOException e){
@@ -103,4 +102,17 @@ public class IOManager {
         selection.points.add(new Point(selection.points.get(0)));
         return selection;
     }
+
+    private static BezierSelection getBezierSelection(String[] line, ImagePanel imagePanel){
+        BezierSelection selection = new BezierSelection(imagePanel);
+        selection.id = Integer.parseInt(line[1]);
+        for(int i = 2; i< line.length-3; i+=2){
+            int x = Integer.parseInt(line[i]);
+            int y = Integer.parseInt(line[i+1]);
+            selection.addPoint(x, y);
+        }
+        selection.points.add(new Point(selection.points.get(0)));
+        return selection;
+    }
+
 }

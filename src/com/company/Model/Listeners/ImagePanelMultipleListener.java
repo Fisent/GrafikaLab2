@@ -1,9 +1,7 @@
 package com.company.Model.Listeners;
 
 import com.company.Model.Point;
-import com.company.Model.Selections.ASelection;
-import com.company.Model.Selections.PolygonSelection;
-import com.company.Model.Selections.SelectionFactory;
+import com.company.Model.Selections.*;
 import com.company.View.GUI;
 import com.company.View.ImagePanel;
 import com.company.View.SelectionListPanel;
@@ -21,6 +19,7 @@ public class ImagePanelMultipleListener implements MouseListener {
     private SelectionFactory factory;
 
     private ASelection selectionInProgress;
+    private BezierSelection bezierSelectionInProgress;
 
 
     public ImagePanelMultipleListener(ImagePanel imagePanel, SelectionListPanel selectionListPanel, SelectionFactory factory){
@@ -41,21 +40,41 @@ public class ImagePanelMultipleListener implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(selectionInProgress == null)
-            selectionInProgress = new PolygonSelection(imagePanel);
+        if(factory.currentSelection == Selections.POLYGON) {
 
-        selectionInProgress.addPoint(e.getX(), e.getY());
+            if (selectionInProgress == null)
+                selectionInProgress = new PolygonSelection(imagePanel);
 
-        if(selectionInProgress.done){
-            selectionInProgress.setId();
-            imagePanel.selections.add(selectionInProgress);
-            selectionInProgress = null;
-            imagePanel.temporarySelection = selectionInProgress;
-        } else
-            imagePanel.temporarySelection = selectionInProgress;
+            selectionInProgress.addPoint(e.getX(), e.getY());
 
-        selectionListPanel.setList(imagePanel.selections);
-        GUI.frame.pack();
+            if (selectionInProgress.done) {
+                selectionInProgress.setId();
+                imagePanel.selections.add(selectionInProgress);
+                selectionInProgress = null;
+                imagePanel.temporarySelection = selectionInProgress;
+            } else
+                imagePanel.temporarySelection = selectionInProgress;
+
+            selectionListPanel.setList(imagePanel.selections);
+            GUI.frame.pack();
+        }
+        else if(factory.currentSelection == Selections.BEIZIER){
+            if (bezierSelectionInProgress == null)
+                bezierSelectionInProgress = new BezierSelection(imagePanel);
+
+            bezierSelectionInProgress.addPoint(e.getX(), e.getY());
+
+            if (bezierSelectionInProgress.done) {
+                bezierSelectionInProgress.setId();
+                imagePanel.selections.add(bezierSelectionInProgress);
+                bezierSelectionInProgress = null;
+                imagePanel.temporarySelection = bezierSelectionInProgress;
+            } else
+                imagePanel.temporarySelection = bezierSelectionInProgress;
+
+            selectionListPanel.setList(imagePanel.selections);
+            GUI.frame.pack();
+        }
     }
 
     @Override

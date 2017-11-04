@@ -28,7 +28,6 @@ public class ImagePanelListener implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        //imagePanel.selections.add(new RectangleSelection(e.getX(), e.getY(), 10, 10));
     }
 
     @Override

@@ -32,5 +32,4 @@ public abstract class ASelection {
     public abstract void addPoint(int x, int y);
 
     public abstract String toSerializableString();
-
 }

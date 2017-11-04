@@ -15,19 +15,15 @@ public class PolygonSelection extends ASelection {
     public static final int DELTA = 20;
 
     public ArrayList<Point> points;
-    private ImagePanel imagePanel;
 
     public PolygonSelection(ImagePanel imagePanel){
         super(imagePanel);
         points = new ArrayList<>();
-        this.imagePanel = imagePanel;
         done = false;
     }
 
-
     @Override
     public void setId() {
-        System.out.println("set id " + done);
         if(done)
             super.setId();
     }
@@ -71,18 +67,12 @@ public class PolygonSelection extends ASelection {
         }
 
         if(!done) {
-
-
-            for (Point p : points) {
-                g2d.drawString("o", p.x, p.y);
-            }
             g2d.drawPolyline(pointsX, pointsY, nOfPoints);
         }
 
         else {
             g2d.drawPolygon(pointsX, pointsY, nOfPoints);
         }
-
     }
 
     @Override

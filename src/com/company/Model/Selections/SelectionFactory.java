@@ -16,6 +16,7 @@ public class SelectionFactory {
     public ImagePanel imagePanel;
 
     public PolygonSelection polygonSelectionInProgress;
+    public BezierSelection bezierSelectionInProgess;
 
     public SelectionFactory(ImagePanel imagePanel){
         this.imagePanel = imagePanel;

@@ -6,6 +6,7 @@ import org.w3c.dom.css.Rect;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
@@ -15,7 +16,12 @@ import java.util.Scanner;
  * Created by lukasz on 31/10/2017.
  */
 public class IOManager {
-    public static BufferedImage loadImage(String filename){
+
+    private static String filename;
+
+    public static BufferedImage loadImage(){
+        String name = JOptionPane.showInputDialog("wpisz nazwe obrazka");
+        filename = name;
         BufferedImage image = null;
         try {
             image = ImageIO.read(new File(filename));
@@ -25,8 +31,7 @@ public class IOManager {
 
     public static boolean saveFile(ArrayList<ASelection> selections){
         try {
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter("save.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename + ".txt"));
             for(ASelection selection : selections){
                 writer.write(selection.toSerializableString() + "\n");
             }
@@ -42,7 +47,8 @@ public class IOManager {
     public static ArrayList<ASelection> loadFile(ImagePanel imagePanel){
         ArrayList<ASelection> loadedList = new ArrayList<ASelection>();
         try {
-            Scanner scanner = new Scanner(new File("save.txt"));
+            Scanner scanner = new Scanner(new File(filename + ".txt"));
+            scanner.nextLine();
             while (scanner.hasNextLine()) {
                 String s = scanner.nextLine();
                 String[] tab = s.split(",");

@@ -46,6 +46,7 @@ public class ImagePanel extends JPanel {
 
     public void updateImage(BufferedImage img){
         image = img;
+        this.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
         this.repaint();
     }
 }

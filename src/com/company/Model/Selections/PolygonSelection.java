@@ -77,6 +77,6 @@ public class PolygonSelection extends ASelection {
 
     @Override
     public String toString(){
-        return "Polygon" + id;
+        return "Wielokąt #" + id;
     }
 }

@@ -91,4 +91,9 @@ public class BezierSelection extends ASelection {
             g2d.draw(gp);
         }
     }
+
+    @Override
+    public String toString(){
+        return "Bezier #" + id;
+    }
 }

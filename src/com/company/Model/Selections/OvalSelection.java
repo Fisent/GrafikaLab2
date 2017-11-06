@@ -28,7 +28,7 @@ public class OvalSelection extends ASelection {
 
     @Override
     public String toString(){
-        return "Circle" + id + " " + "x: " + x + ", y: " + y + " width: " + width + " height: " + height;
+        return "Owal #:" + id;
     }
 
     @Override

@@ -24,8 +24,11 @@ public class GUI {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(1024, 512));
         frame.getContentPane().setLayout(new BorderLayout());
+        imagePanel.setPreferredSize(new Dimension(1000, 1000));
+        JScrollPane scrollPane = new JScrollPane(imagePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        frame.getContentPane().add(imagePanel, BorderLayout.CENTER);
+
+        frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
         frame.getContentPane().add(menuPanel, BorderLayout.NORTH);
         frame.getContentPane().add(new JScrollPane(selectionListPanel), BorderLayout.EAST);
 

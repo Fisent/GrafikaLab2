@@ -42,6 +42,6 @@ public class RectangleSelection extends ASelection {
 
     @Override
     public String toString(){
-        return "s" + id + " " + "x: " + x + ", y: " + y + " width: " + width + ", height: " + height;
+        return "Prostokąt #" + id;
     }
 }
